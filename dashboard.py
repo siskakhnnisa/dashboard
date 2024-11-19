@@ -12,11 +12,11 @@ def load_braille_model():
 model = load_braille_model()
 
 # Fungsi untuk memproses gambar
-def process_image(image):
-    img_size = (28, 28) 
+def process_image(image, img_height=28, img_width=28):
     image = ImageOps.grayscale(image)  
-    image = image.resize(img_size) 
+    image = image.resize((img_width, img_height)) 
     img_array = np.array(image) / 255.0  
+    img_array = np.expand_dims(img_array, axis=-1)  
     img_array = np.expand_dims(img_array, axis=0) 
     return img_array
 
