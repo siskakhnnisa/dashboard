@@ -7,7 +7,7 @@ import numpy as np
 # Fungsi untuk memuat model
 @st.cache_resource
 def load_braille_model():
-    return load_model("model_braille.h5")  # Ganti dengan path model Anda
+    return load_model("./model_braille.h5")  # Ganti dengan path model Anda
 
 model = load_braille_model()
 
