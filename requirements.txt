@@ -6,3 +6,5 @@ unidecode
 urllib3==2.0.7
 Babel==2.11.0
 streamlit==1.39.0
+
+tensorflow==2.11.0
