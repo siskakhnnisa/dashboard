@@ -37,7 +37,7 @@ if uploaded_file is not None:
     st.image(image, caption="Gambar yang diunggah", use_column_width=True)
 
     # Memproses gambar dan melakukan prediksi
-     with st.spinner("Memproses gambar dan melakukan prediksi..."):
+    with st.spinner("Memproses gambar dan melakukan prediksi..."):
         img_array = process_image(image)  # Memproses gambar
         
         # Debugging: Print the shape of the image before prediction
