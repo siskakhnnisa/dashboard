@@ -24,7 +24,7 @@ uploaded_file = st.file_uploader("Upload file gambar (jpg/png)", type=["jpg", "j
 
 if uploaded_file is not None:
     image = Image.open(uploaded_file)
-    st.image(image, caption="Gambar yang diunggah", use_column_width=True)
+    st.image(image, caption="Gambar yang diunggah", use_column_width=False,width=400)
 
     with st.spinner("Memproses gambar dan melakukan prediksi..."):
         img_array = process_image(image)          
