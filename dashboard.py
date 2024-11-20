@@ -17,6 +17,25 @@ def process_image(image, img_height=64, img_width=64):
     img_array = np.expand_dims(img_array, axis=0)     
     return img_array
 
+# Sidebar
+with st.sidebar:
+    # Title
+    st.title("Siska Khoirunnisa \nMachine Learning Cohort 2024 H2")
+
+    col1, col2, col3 = st.columns([1, 2, 1])  
+    with col2:  
+        st.write("")  
+        st.image("https://raw.githubusercontent.com/siskakhnnisa/just_gambar/refs/heads/main/person.png", width=150)  # Menampilkan gambar
+        st.write("") 
+
+    start_date, end_date = st.date_input(
+        label="Select Date Range",
+        value=[min_date, max_date],
+        min_value=min_date,
+        max_value=max_date
+    )
+
+
 st.title("Dashboard Deteksi Pola Braille")
 st.write("Unggah gambar pola Braille untuk mendeteksi huruf.")
 
