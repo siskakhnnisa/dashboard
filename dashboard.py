@@ -20,7 +20,7 @@ def process_image(image, img_height=64, img_width=64):
 # Sidebar
 with st.sidebar:
     # Title
-    st.title("Hai! Nais to see you here <3")
+    st.title("Hai! Nais to see you here <3\nThis dashboard is designed to help you recognize Braille patterns :)")
 
     col1, col2, col3 = st.columns([1, 2, 1])  
     with col2:  
