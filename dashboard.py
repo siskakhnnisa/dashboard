@@ -12,7 +12,8 @@ def load_braille_model():
 model = load_braille_model()
 
 # Fungsi untuk memproses gambar
-def process_image(image, img_height=28, img_width=28):
+# Update image size to be larger
+def process_image(image, img_height=64, img_width=64):
     # Konversi gambar ke grayscale
     image = ImageOps.grayscale(image)  
     # Resize gambar agar sesuai dengan ukuran input model
