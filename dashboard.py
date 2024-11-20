@@ -24,7 +24,11 @@ uploaded_file = st.file_uploader("Upload file gambar (jpg/png)", type=["jpg", "j
 
 if uploaded_file is not None:
     image = Image.open(uploaded_file)
-    st.image(image, caption="Gambar yang diunggah", use_column_width=False,width=400)
+    
+    # Display image in the center
+    col1, col2, col3 = st.columns([1, 2, 1])  # Create three columns, centering the image
+    with col2:  # Middle column
+        st.image(image, caption="Gambar yang diunggah", use_column_width=False, width=400)
 
     with st.spinner("Memproses gambar dan melakukan prediksi..."):
         img_array = process_image(image)          
