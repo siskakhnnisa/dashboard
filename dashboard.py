@@ -27,12 +27,6 @@ with st.sidebar:
         st.write("")  
         st.image("https://raw.githubusercontent.com/siskakhnnisa/just_gambar/refs/heads/main/person.png", width=150)  # Menampilkan gambar
         st.write("") 
-
-    start_date, end_date = st.date_input(
-        label="Select Date Range",
-        value=[min_date, max_date],
-        min_value=min_date,
-        max_value=max_date
     )
 
 
