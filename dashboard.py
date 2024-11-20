@@ -31,6 +31,20 @@ with st.sidebar:
 st.header("Braille Pattern Detection Dashboard")  
 st.write("Upload a Braille pattern image, and we'll help you identify the letter!")
 
+# Display example images
+st.subheader("Example Images")
+example_col1, example_col2, example_col3 = st.columns(3)
+
+with example_col1:
+    st.image("https://raw.githubusercontent.com/siskakhnnisa/just_gambar/refs/heads/main/example1.png", caption="Example 1", use_column_width=True)
+
+with example_col2:
+    st.image("https://raw.githubusercontent.com/siskakhnnisa/just_gambar/refs/heads/main/example2.png", caption="Example 2", use_column_width=True)
+
+with example_col3:
+    st.image("https://raw.githubusercontent.com/siskakhnnisa/just_gambar/refs/heads/main/example3.png", caption="Example 3", use_column_width=True)
+
+
 uploaded_file = st.file_uploader("Upload file gambar (jpg/png)", type=["jpg", "jpeg", "png"])
 
 if uploaded_file is not None:
