@@ -32,9 +32,16 @@ st.write("Unggah gambar pola Braille untuk mendeteksi huruf.")
 st.markdown(
     """
     <style>
-    .centered-image {
+    .centered-container {
         display: flex;
         justify-content: center;
+        align-items: center;
+        height: 100vh;  /* Mengatur ketinggian div menjadi 100% dari tinggi viewport */
+    }
+    .centered-image {
+        max-width: 300px;  /* Mengatur lebar maksimum gambar */
+        width: auto;
+        height: auto;
     }
     </style>
     """,
