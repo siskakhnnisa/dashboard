@@ -28,25 +28,27 @@ def process_image(image, img_height=64, img_width=64):
 st.title("Dashboard Deteksi Pola Braille")
 st.write("Unggah gambar pola Braille untuk mendeteksi huruf.")
 
-# Tambahkan gaya CSS untuk memusatkan elemen
+# Tambahkan gaya CSS untuk memusatkan elemen sepenuhnya
 st.markdown(
     """
     <style>
-    .centered-container {
+    .center-container {
         display: flex;
         justify-content: center;
         align-items: center;
-        height: 100vh;  /* Mengatur ketinggian div menjadi 100% dari tinggi viewport */
+        height: 100vh;  /* Memastikan kontainer memenuhi tinggi viewport */
+        flex-direction: column;
     }
-    .centered-image {
-        max-width: 300px;  /* Mengatur lebar maksimum gambar */
-        width: auto;
-        height: auto;
+    .center-image {
+        max-width: 300px;
+        max-height: 300px;
+        margin: auto;
     }
     </style>
     """,
     unsafe_allow_html=True,
 )
+
 
 # Input gambar dari user
 uploaded_file = st.file_uploader("Upload file gambar (jpg/png)", type=["jpg", "jpeg", "png"])
