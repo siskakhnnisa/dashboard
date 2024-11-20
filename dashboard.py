@@ -20,7 +20,7 @@ def process_image(image, img_height=64, img_width=64):
 # Sidebar
 with st.sidebar:
     # Title
-    st.title("Siska Khoirunnisa \nMachine Learning Cohort 2024 H2")
+    st.title("Hai! Nais to see you here <3")
 
     col1, col2, col3 = st.columns([1, 2, 1])  
     with col2:  
