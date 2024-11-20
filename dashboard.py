@@ -28,7 +28,7 @@ if uploaded_file is not None:
     # Display image in the center
     col1, col2, col3 = st.columns([1, 2, 1])  # Create three columns, centering the image
     with col2:  # Middle column
-        st.image(image, caption="Gambar yang diunggah", use_column_width=False, width=400)
+        st.image(image, caption="Gambar yang diunggah", use_column_width=False, width=300)
 
     with st.spinner("Memproses gambar dan melakukan prediksi..."):
         img_array = process_image(image)          
