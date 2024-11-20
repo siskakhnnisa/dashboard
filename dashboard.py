@@ -34,7 +34,7 @@ uploaded_file = st.file_uploader("Upload file gambar (jpg/png)", type=["jpg", "j
 if uploaded_file is not None:
     # Menampilkan gambar yang diunggah
     image = Image.open(uploaded_file)
-    st.image(image, caption="Gambar yang diunggah", use_column_width=True)
+    st.image(image, caption="Gambar yang diunggah", use_column_width=False, width=300)
 
     # Memproses gambar dan melakukan prediksi
     with st.spinner("Memproses gambar dan melakukan prediksi..."):
