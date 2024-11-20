@@ -28,17 +28,16 @@ def process_image(image, img_height=64, img_width=64):
 st.title("Dashboard Deteksi Pola Braille")
 st.write("Unggah gambar pola Braille untuk mendeteksi huruf.")
 
-# Tambahkan gaya CSS untuk memusatkan gambar secara horizontal
+# Tambahkan gaya CSS untuk memastikan gambar berada di tengah secara horizontal
 st.markdown(
     """
     <style>
     .center-container {
         display: flex;
-        justify-content: center; /* Untuk memusatkan secara horizontal */
-        align-items: center;   /* Untuk memusatkan secara vertikal */
+        justify-content: center; /* Memusatkan secara horizontal */
     }
     .center-image {
-        max-width: 300px;  /* Atur ukuran maksimum gambar */
+        max-width: 300px;  /* Ukuran maksimum gambar */
         height: auto;
     }
     </style>
@@ -46,17 +45,15 @@ st.markdown(
     unsafe_allow_html=True,
 )
 
-
-# Input gambar dari user
-uploaded_file = st.file_uploader("Upload file gambar (jpg/png)", type=["jpg", "jpeg", "png"])
+# Input file gambar
+uploaded_file = st.file_uploader("Upload gambar (jpg/png)", type=["jpg", "jpeg", "png"])
 
 if uploaded_file is not None:
-    # Menampilkan gambar yang diunggah dengan ukuran lebih kecil dan posisi tengah
+    # Tampilkan gambar di tengah dengan div wrapper
     image = Image.open(uploaded_file)
-    st.markdown('<div class="centered-image">', unsafe_allow_html=True)
-    st.image(image, caption="Gambar yang diunggah", use_column_width=False, width=300)  # Atur lebar gambar
+    st.markdown('<div class="center-container">', unsafe_allow_html=True)
+    st.image(image, caption="Gambar yang diunggah", use_column_width=False, width=300)
     st.markdown('</div>', unsafe_allow_html=True)
-
     # Memproses gambar dan melakukan prediksi
     with st.spinner("Memproses gambar dan melakukan prediksi..."):
         img_array = process_image(image)  # Memproses gambar
