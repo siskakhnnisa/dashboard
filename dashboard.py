@@ -28,7 +28,7 @@ with st.sidebar:
         st.image("https://raw.githubusercontent.com/siskakhnnisa/just_gambar/refs/heads/main/person.png", width=150)  # Menampilkan gambar
         st.write("") 
 
-st.title("Braille Pattern Detection Dashboard")
+st.header("Braille Pattern Detection Dashboard")  
 st.write("Upload a Braille pattern image, and we'll help you identify the letter!")
 
 uploaded_file = st.file_uploader("Upload file gambar (jpg/png)", type=["jpg", "jpeg", "png"])
