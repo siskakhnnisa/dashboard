@@ -28,37 +28,36 @@ def process_image(image, img_height=64, img_width=64):
 st.title("Dashboard Deteksi Pola Braille")
 st.write("Unggah gambar pola Braille untuk mendeteksi huruf.")
 
+# Tambahkan gaya CSS untuk memusatkan elemen
+st.markdown(
+    """
+    <style>
+    .centered-image {
+        display: flex;
+        justify-content: center;
+    }
+    </style>
+    """,
+    unsafe_allow_html=True,
+)
+
 # Input gambar dari user
 uploaded_file = st.file_uploader("Upload file gambar (jpg/png)", type=["jpg", "jpeg", "png"])
 
 if uploaded_file is not None:
-    # Menampilkan gambar yang diunggah
+    # Menampilkan gambar yang diunggah dengan ukuran lebih kecil dan posisi tengah
     image = Image.open(uploaded_file)
-    st.image(image, caption="Gambar yang diunggah", use_column_width=False, width=300)
+    st.markdown('<div class="centered-image">', unsafe_allow_html=True)
+    st.image(image, caption="Gambar yang diunggah", use_column_width=False, width=300)  # Atur lebar gambar
+    st.markdown('</div>', unsafe_allow_html=True)
 
-    # Memproses gambar dan melakukan prediksi
-    with st.spinner("Memproses gambar dan melakukan prediksi..."):
-         image = Image.open(uploaded_file)
-    
-    # Konversi gambar ke Base64
-    img_base64 = image_to_base64(image)
-
-    # Membungkus gambar dengan div untuk perataan tengah
-    st.markdown(
-        f"""
-        <div style="text-align: center;">
-            <img src="data:image/png;base64,{img_base64}" alt="Uploaded Image" style="width: 300px; height: auto;"/>
-        </div>
-        """,
-        unsafe_allow_html=True,
-    )
-    st.write("Gambar yang diunggah")
     # Memproses gambar dan melakukan prediksi
     with st.spinner("Memproses gambar dan melakukan prediksi..."):
         img_array = process_image(image)  # Memproses gambar
         
         # Debugging: Print the shape of the image before prediction
-        print("Shape before prediction:", img_array.shape)  
+        print("Shape before prediction:", img_array.shape)
+        
         try:
             prediction = model.predict(img_array)  # Prediksi dengan model
             predicted_class = np.argmax(prediction, axis=1)  # Mengambil indeks kelas dengan probabilitas tertinggi
@@ -72,4 +71,3 @@ if uploaded_file is not None:
         except Exception as e:
             st.error(f"Error during prediction: {e}")
             print(f"Error during prediction: {e}")
-
