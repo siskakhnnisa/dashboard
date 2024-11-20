@@ -28,8 +28,8 @@ with st.sidebar:
         st.image("https://raw.githubusercontent.com/siskakhnnisa/just_gambar/refs/heads/main/person.png", width=150)  # Menampilkan gambar
         st.write("") 
 
-st.title("Dashboard Deteksi Pola Braille")
-st.write("Unggah gambar pola Braille untuk mendeteksi huruf.")
+st.title("Braille Pattern Detection Dashboard")
+st.write("Upload a Braille pattern image, and we'll help you identify the letter!")
 
 uploaded_file = st.file_uploader("Upload file gambar (jpg/png)", type=["jpg", "jpeg", "png"])
 
@@ -39,9 +39,9 @@ if uploaded_file is not None:
     # Display image in the center
     col1, col2, col3 = st.columns([1, 2, 1])  # Create three columns, centering the image
     with col2:  # Middle column
-        st.image(image, caption="Gambar yang diunggah", use_column_width=False, width=300)
+        st.image(image, caption="Your Uploaded Image", use_column_width=False, width=300)
 
-    with st.spinner("Memproses gambar dan melakukan prediksi..."):
+    with st.spinner("Hang tight, we're processing the image and making a prediction..."):
         img_array = process_image(image)          
         print("Shape before prediction:", img_array.shape)
         
@@ -50,7 +50,7 @@ if uploaded_file is not None:
             predicted_class = np.argmax(prediction, axis=1)  
             alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ" 
             detected_char = alphabet[predicted_class[0]]
-            st.success(f"Huruf Braille yang terdeteksi: **{detected_char}**")
+            st.success(f"The Braille letter detected is: **{detected_char}**")
         except Exception as e:
             st.error(f"Error during prediction: {e}")
             print(f"Error during prediction: {e}")
