@@ -38,11 +38,27 @@ if uploaded_file is not None:
 
     # Memproses gambar dan melakukan prediksi
     with st.spinner("Memproses gambar dan melakukan prediksi..."):
+         image = Image.open(uploaded_file)
+    
+    # Konversi gambar ke Base64
+    img_base64 = image_to_base64(image)
+
+    # Membungkus gambar dengan div untuk perataan tengah
+    st.markdown(
+        f"""
+        <div style="text-align: center;">
+            <img src="data:image/png;base64,{img_base64}" alt="Uploaded Image" style="width: 300px; height: auto;"/>
+        </div>
+        """,
+        unsafe_allow_html=True,
+    )
+    st.write("Gambar yang diunggah")
+    # Memproses gambar dan melakukan prediksi
+    with st.spinner("Memproses gambar dan melakukan prediksi..."):
         img_array = process_image(image)  # Memproses gambar
         
         # Debugging: Print the shape of the image before prediction
-        print("Shape before prediction:", img_array.shape)
-        
+        print("Shape before prediction:", img_array.shape)  
         try:
             prediction = model.predict(img_array)  # Prediksi dengan model
             predicted_class = np.argmax(prediction, axis=1)  # Mengambil indeks kelas dengan probabilitas tertinggi
