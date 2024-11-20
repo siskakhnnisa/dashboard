@@ -7,20 +7,19 @@ import numpy as np
 # Fungsi untuk memuat model
 @st.cache_resource
 def load_braille_model():
-    return load_model("braille_model.h5") 
+    return load_model("braille_model.h5")  # Load the Braille model
 
 model = load_braille_model()
 
 # Fungsi untuk memproses gambar
 def process_image(image, img_height=28, img_width=28):
+    # Konversi gambar ke grayscale
     image = ImageOps.grayscale(image)  
+    # Resize gambar agar sesuai dengan ukuran input model
     image = image.resize((img_width, img_height)) 
-    img_array = np.array(image) / 255.0  
-    img_array = np.expand_dims(img_array, axis=-1)  
-    img_array = np.expand_dims(img_array, axis=0) 
-
-     # Debugging: Print the shape of the input image
-    print("Image shape:", img_array.shape)
+    img_array = np.array(image) / 255.0  # Normalisasi nilai piksel
+    img_array = np.expand_dims(img_array, axis=-1)  # Tambahkan dimensi channel (grayscale)
+    img_array = np.expand_dims(img_array, axis=0)  # Tambahkan dimensi batch (1 gambar)
     
     return img_array
 
@@ -57,5 +56,3 @@ if uploaded_file is not None:
             st.error(f"Error during prediction: {e}")
             print(f"Error during prediction: {e}")
 
-    # Menampilkan hasil prediksi
-    st.success(f"Huruf Braille yang terdeteksi: **{detected_char}**")
